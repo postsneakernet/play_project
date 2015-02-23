@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load django_markdown %}
+
+{% block headertitle %}
+{{ lesson.title }}
+{% endblock %}
+
+{% block title %}
+{{ lesson.title }}
+{% endblock %}
+
+{% block content %}
+<hr class="featurette-divider">
+<div class ="row featurette">
+<div class ="col-md-6">
+<h2>
+{{ lesson.title }}: Intro
+</h2>
+<p class="lead">
+{{ lesson.brief|markdown }}
+
+last modified: {{ lesson.modified }}
+</p>
+</div>
+<div class="col-md-6">
+<img class="img-responsive" src="{{ MEDIA_URL }}{{ lesson.photo }}">
+</div>
+</div>
+<hr class="featurette-divider">
+
+<div class="row featurette-divider">
+<div>
+<h2>
+Content
+</h2>
+<p>
+{{ lesson.body|markdown }}
+</p>
+</div>
+</div>
+
+<hr class="featurette-divider">
+{% endblock %}

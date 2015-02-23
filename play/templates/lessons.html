@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load django_markdown %}
+
+{% block headertitle %}
+Lessons
+{% endblock %}
+
+{% block title %}
+Lessons
+{% endblock %}
+
+{% block content %}
+<hr class="featurette-divider">
+<div class="row">
+<div class="center-block text-center">
+<h1>Lessons</h1>
+</div>
+
+{% for lesson in lessons %}
+<div class="col-lg-4">
+<img class="img-circle" src="{{ MEDIA_URL }}{{ lesson.icon }}" style="width: 140px; height: 140px;">
+<h2>{{ lesson.title }}</h2>
+<p>{{ lesson.brief|truncatewords:50}}</p>
+<p><a class="btn btn-default" href="{% url 'lesson_detail' lesson_slug=lesson.slug %}" role="button">View Lesson &raquo;</a></p>
+</div><!-- /.col-lg-4 -->
+{% endfor %}
+
+</div><!-- /.row -->
+<hr class="featurette-divider">
+{% endblock %}
