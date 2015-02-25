@@ -5,6 +5,7 @@ from play import views
 
 urlpatterns = patterns('',
     url(r'^lessons/', include('lessons.urls')),
+    url(r'^quiz/', include('quizzes.urls')),
     url(r'^hello/', include('hello.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include("django_markdown.urls")),

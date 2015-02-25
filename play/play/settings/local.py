@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     'django_markdown',
     'hello',
     'lessons',
+    'quizzes',
 )
 
 MIDDLEWARE_CLASSES = (

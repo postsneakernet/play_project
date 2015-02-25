@@ -36,6 +36,8 @@ Content
 </h2>
 <p>
 {{ lesson.body|markdown }}
+<br>
+<p><a class="btn btn-md btn-primary" href="{% url 'quiz_detail' lesson_slug=lesson.slug %}" role="button">Take the quiz &raquo;</a></p>
 </p>
 </div>
 </div>

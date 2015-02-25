@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load django_markdown %}
+
+{% block headertitle %}
+Take a Quiz
+{% endblock %}
+
+{% block title %}
+Take a Quiz
+{% endblock %}
+
+{% block content %}
+<hr class="featurette-divider">
+
+<div class="row featurette-divider">
+<div>
+<h3>
+{% if quizzes %}
+Take a Quiz
+{% else %}
+There are not any quizzes yet. Check back later.
+{% endif %}
+</h3>
+
+<p>
+<ul>
+{% for q in quizzes %}
+<li>
+<a href="{% url 'quiz_detail' lesson_slug=q.slug %}">
+{{ q.title }}
+</a>
+</li>
+{% endfor %}
+</ul>
+</p>
+</div>
+</div>
+
+<hr class="featurette-divider">
+{% endblock %}

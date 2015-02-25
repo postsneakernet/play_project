@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load django_markdown %}
+
+{% block headertitle %}
+{{ questions.0.lesson.title }} Quiz
+{% endblock %}
+
+{% block title %}
+{{ questions.0.lesson.title }} Quiz
+{% endblock %}
+
+{% block content %}
+<hr class="featurette-divider">
+
+<div class="row featurette-divider">
+<div>
+<h3>
+{% if questions %}
+{{ questions.0.lesson.title }} Quiz
+{% else %}
+This quiz hasn't been implemented yet. Check back later.
+{% endif %}
+</h3><br>
+
+{% for q in questions %}
+<p>
+{{ q.question_text|markdown }}
+{% for a in answers %}
+{% if a.question.slug == q.slug %}
+
+<form action="{% url 'quiz_results' %}" method="post">
+{% csrf_token %}
+
+<div class="radio">
+<label>
+<input type="radio" name="{{ a.question.slug }}">
+{{ a.answer_text|markdown }}
+</input>
+</label>
+</div>
+{% endif %}
+{% endfor %}
+</p>
+{% endfor %}
+
+{% if questions %}
+<p>
+<input class="btn btn-md btn-primary" role="button" type="submit" value="Submit quiz &raquo;"/>
+</p>
+{% endif %}
+</form>
+</div>
+</div>
+
+<hr class="featurette-divider">
+{% endblock %}
