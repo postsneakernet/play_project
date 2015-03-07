@@ -49,10 +49,7 @@ Base Template
 {% block nav %}
 <li><a href="{% url 'lesson_index' %}">Lessons</a></li>
 <li><a href="{% url 'quiz_index' %}">Quiz</a></li>
-<li><a href="{% url 'login' %}">Log In</a></li>
-<li><a href="{% url 'signup' %}">Sign Up</a></li>
-<li><a href="{% url 'user' %}">Guest</a></li>
-<li><a href="{% url 'about' %}">About</a></li>
+<li><a href="#">About</a></li>
 {% endblock %}
 
 </ul>
@@ -76,7 +73,7 @@ Base Template
 
 {% block footer %}
 <p class="pull-right"><a href="#">Back to top</a></p>
-<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="{% url 'admin:index' %}">Admin</a></p>
+<p>Site developed using Django and Bootstrap &middot; <a href="{% url 'admin:index' %}">Admin</a></p>
 {% endblock %}
 
 </footer>
