@@ -11,9 +11,9 @@ import os
 import sys
 
 # add project to path
-sys.path.append('/home/elliot/web_dev/play_project/play')
+sys.path.append('/home/play/web_dev/play_project/play')
 # add virtualenv site-packages to path
-sys.path.append('/home/elliot/.virtualenvs/play_project/lib/python3.4/site-packages/')
+sys.path.append('/home/play/.virtualenvs/play_project/lib/python3.4/site-packages/')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "play.settings.production")
 
