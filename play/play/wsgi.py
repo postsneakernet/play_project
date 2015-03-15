@@ -13,9 +13,9 @@ import sys
 # add project to path
 sys.path.append('/home/play/web_dev/play_project/play')
 # add virtualenv site-packages to path
-sys.path.append('/home/play/.virtualenvs/play_project/lib/python3.4/site-packages/')
+sys.path.append('/home/play/.virtualenvs/play_project/lib/python3.3/site-packages/')
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "play.settings.production")
+os.environ["DJANGO_SETTINGS_MODULE"] = "play.settings.production"
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
