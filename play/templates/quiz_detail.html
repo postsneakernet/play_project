@@ -22,36 +22,70 @@
 This quiz hasn't been implemented yet. Check back later.
 {% endif %}
 </h3><br>
+<h4 id="score">
+</h4>
 
 {% for q in questions %}
 <p>
+<form>
 {{ q.question_text|markdown }}
 {% for a in answers %}
 {% if a.question.slug == q.slug %}
 
-<form action="{% url 'quiz_results' %}" method="post">
-{% csrf_token %}
-
 <div class="radio">
 <label>
-<input type="radio" name="{{ a.question.slug }}">
+{% if a.is_correct_answer %}
+<input type="radio" class="correct" name="{{ a.question.slug }}">
+{% else %}
+<input type="radio" class="wrong" name="{{ a.question.slug }}">
+{% endif %}
 {{ a.answer_text|markdown }}
 </input>
 </label>
 </div>
 {% endif %}
 {% endfor %}
+</form>
 </p>
 {% endfor %}
 
 {% if questions %}
 <p>
-<input class="btn btn-md btn-primary" role="button" type="submit" value="Submit quiz &raquo;"/>
+<button class="btn btn-md btn-primary" onclick="check()">Submit quiz &raquo;</button>
 </p>
 {% endif %}
-</form>
 </div>
 </div>
 
 <hr class="featurette-divider">
+{% endblock %}
+
+{% block functions %}
+<script>
+toggle = false;
+function check() {
+    if (toggle) {
+        alert("Already submitted quiz");
+        return;
+    }
+    toggle = true;
+    var correct = document.getElementsByClassName("correct");
+    var wrong = document.getElementsByClassName("wrong");
+    var score = 0;
+    for (i = 0; i < correct.length; i++) {
+        if (correct[i].checked == true) {
+            score++;
+            correct[i].parentNode.style.color = 'lightgreen';
+        }
+    }
+
+    for (i = 0; i < wrong.length; i++) {
+        if (wrong[i].checked == true) {
+            wrong[i].parentNode.style.color = 'red';
+        }
+    }
+
+    document.getElementById("score").innerHTML ="You got "+score+" correct!";
+}
+</script>
 {% endblock %}
