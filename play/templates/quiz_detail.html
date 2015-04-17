@@ -7,7 +7,9 @@
 {% endblock %}
 
 {% block title %}
+<a id="top">
 {{ questions.0.lesson.title }} Quiz
+</a>
 {% endblock %}
 
 {% block content %}
@@ -86,6 +88,7 @@ function check() {
     }
 
     document.getElementById("score").innerHTML ="You got "+score+" correct!";
+    window.location.href = '#top';
 }
 </script>
 {% endblock %}
