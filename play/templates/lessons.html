@@ -21,7 +21,7 @@ Lessons
 <div class="col-lg-4">
 <img class="img-circle" src="{{ MEDIA_URL }}{{ lesson.icon }}" style="width: 140px; height: 140px;">
 <h2>{{ lesson.title }}</h2>
-<p>{{ lesson.brief|truncatewords:50}}</p>
+<p>{{ lesson.brief|truncatechars:200}}</p>
 <p><a class="btn btn-default" href="{% url 'lesson_detail' lesson_slug=lesson.slug %}" role="button">View Lesson &raquo;</a></p>
 </div><!-- /.col-lg-4 -->
 {% endfor %}
