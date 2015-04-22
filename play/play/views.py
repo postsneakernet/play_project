@@ -13,17 +13,5 @@ def about(request):
 
     return render(request, 'about.html', {'about': about})
 
-def login(request):
-    login = "login"
-
-    return render(request, 'login.html', {'login': login})
-
-def signup(request):
-    signup = "signup"
-
-    return render(request, 'signup.html', {'signup': signup})
-
-def user(request):
-    user = "user"
-
-    return render(request, 'user.html', {'user': user})
+def error404(request):
+    return render(request, '404.html')

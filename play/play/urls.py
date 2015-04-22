@@ -10,9 +10,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include("django_markdown.urls")),
     url(r'^about/', views.about, name="about"),
-    url(r'^login/', views.login, name="login"),
-    url(r'^signup/', views.signup, name="signup"),
-    url(r'^user/', views.user, name="user"),
     url(r'^$', views.home, name="home"),
 )
 
@@ -20,3 +17,5 @@ if settings.DEBUG:
     urlpatterns += patterns('',
             (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
                     'document_root': settings.MEDIA_ROOT}))
+
+handler404 = 'play.views.error404'
